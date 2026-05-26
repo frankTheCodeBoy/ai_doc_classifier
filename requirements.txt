@@ -1,0 +1,11 @@
+﻿fastapi
+joblib
+openai
+PyMuPDF
+python-dotenv
+python-docx
+requests
+scikit-learn
+sentence-transformers
+streamlit
+uvicorn
