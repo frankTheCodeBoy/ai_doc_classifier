@@ -15,7 +15,7 @@ from fastapi import FastAPI, UploadFile  # noqa: E402
 from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
 
 from db import init_db, save_analysis  # noqa: E402
-from utils.extract import extract_text_docx, extract_text_pdf  # noqa: E402
+from utils.extract import extract_text_pdf  # noqa: E402
 from utils.preprocess import clean_text  # noqa: E402
 
 try:
@@ -170,16 +170,13 @@ def extract_text_from_upload(filename: str, contents: bytes) -> str:
 
     if suffix == ".pdf":
         temp_path = temp_path.with_suffix(".pdf")
-    elif suffix == ".docx":
-        temp_path = temp_path.with_suffix(".docx")
     else:
         raise ValueError(f"Unsupported file type: {suffix or filename}")
 
     try:
         temp_path.write_bytes(contents)
         if suffix == ".pdf":
-            return extract_text_pdf(str(temp_path))
-        return extract_text_docx(str(temp_path))
+            return extract_text_pdf(str(temp_path))  
     finally:
         if temp_path.exists():
             temp_path.unlink()
