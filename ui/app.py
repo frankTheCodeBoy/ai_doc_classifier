@@ -6,6 +6,7 @@ import pandas as pd
 import requests
 import streamlit as st
 from dotenv import load_dotenv
+from api.main import API_KEY
 from db import get_history, init_db
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,17 +39,17 @@ def make_upload_payload(uploaded_file):
 
 
 def fetch_json(url, uploaded_file, timeout=30):
+    headers = {"X-API-Key": API_KEY} if API_KEY else {}
     response = requests.post(
         url,
         files=make_upload_payload(uploaded_file),
+        headers=headers,   # <-- add this
         timeout=timeout,
     )
     response.raise_for_status()
     payload = response.json()
-
     if not isinstance(payload, dict):
         raise ValueError("Unexpected response format")
-
     return payload
 
 
@@ -122,9 +123,9 @@ def format_category(category):
 
 def check_backend_status():
     api_root = API_URL_CLASSIFY.replace("/classify", "/")
-
+    headers = {"X-API-Key": API_KEY} if API_KEY else {}
     try:
-        response = requests.get(api_root, timeout=3)
+        response = requests.get(api_root, headers=headers, timeout=3)
         response.raise_for_status()
         return True, None
     except requests.exceptions.RequestException as exc:

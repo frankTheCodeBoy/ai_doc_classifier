@@ -11,8 +11,10 @@ if str(BASE_DIR) not in sys.path:
 
 import joblib  # noqa: E402
 from dotenv import load_dotenv  # noqa: E402
-from fastapi import FastAPI, UploadFile  # noqa: E402
+from fastapi import Depends, FastAPI, Header, UploadFile  # noqa: E402
+from fastapi import HTTPException  # noqa: E402
 from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
+
 
 from db import init_db, save_analysis  # noqa: E402
 from utils.extract import extract_text_pdf  # noqa: E402
@@ -49,6 +51,16 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# --- Security / Auth ---
+API_KEY = os.getenv("BACKEND_API_KEY", "")
+
+
+def verify_api_key(x_api_key: str = Header(None)):
+    if API_KEY and x_api_key != API_KEY:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    return True
+
 
 MODEL_PATH = BASE_DIR / "models" / "resume_classifier.pkl"
 VECTORIZER_PATH = BASE_DIR / "models" / "vectorizer.pkl"
@@ -176,7 +188,7 @@ def extract_text_from_upload(filename: str, contents: bytes) -> str:
     try:
         temp_path.write_bytes(contents)
         if suffix == ".pdf":
-            return extract_text_pdf(str(temp_path))  
+            return extract_text_pdf(str(temp_path))
     finally:
         if temp_path.exists():
             temp_path.unlink()
@@ -366,7 +378,8 @@ def run_semantic_analysis(text: str) -> dict[str, Any]:
 
 
 @app.post("/classify")
-async def classify_endpoint(file: UploadFile):
+async def classify_endpoint(
+ file: UploadFile, _: bool = Depends(verify_api_key)):
     raw = await file.read()
     text = extract_text_from_upload(file.filename or "resume.pdf", raw)
     category = classify_text(text)
@@ -378,7 +391,8 @@ async def classify_endpoint(file: UploadFile):
 
 
 @app.post("/analyze")
-async def analyze_endpoint(file: UploadFile):
+async def analyze_endpoint(
+ file: UploadFile, _: bool = Depends(verify_api_key)):
     raw = await file.read()
     text = extract_text_from_upload(file.filename or "resume.pdf", raw)
     payload = run_semantic_analysis(text)
@@ -399,7 +413,7 @@ async def analyze_endpoint(file: UploadFile):
 
 
 @app.get("/")
-async def root():
+async def root(_: bool = Depends(verify_api_key)):
     return {"status": "ok", "service": "resume classifier"}
 
 
