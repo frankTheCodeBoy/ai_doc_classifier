@@ -11,5 +11,6 @@
   "sales_resume.pdf": "Sales",
   "social_worker_resume.pdf": "Social Work",
   "tourism_resume.pdf": "Tourism",
-  "writer_resume.pdf": "Writing"
+  "writer_resume.pdf": "Writing",
+  "other_resume.pdf": "Other"
 }

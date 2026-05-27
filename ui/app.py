@@ -152,6 +152,11 @@ with st.sidebar:
         "- **Explore** persistent database history"
     )
 
+    st.markdown("### About")
+    st.write("© 2026 Francis Olum — AI Resume Classifier™")
+    st.write("Analytics Engineer & Open‑Source Advocate")
+    st.write("🐙GitHub: [frankTheCodeBoy](https://github.com/frankTheCodeBoy)")
+
 # Header / App Title Block
 header_col1, header_col2 = st.columns([3, 1])
 with header_col1:
