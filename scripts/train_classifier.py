@@ -27,7 +27,7 @@ preprocess_module = importlib.util.module_from_spec(PREPROCESS_SPEC)
 EXTRACT_SPEC.loader.exec_module(extract_module)
 PREPROCESS_SPEC.loader.exec_module(preprocess_module)
 
-extract_text_docx = extract_module.extract_text_docx
+# extract_text_docx = extract_module.extract_text_docx
 extract_text_pdf = extract_module.extract_text_pdf
 clean_text = preprocess_module.clean_text
 
@@ -93,11 +93,10 @@ def register_training_samples(
 def _load_resume_text(resume_path: Path) -> str:
     if resume_path.suffix.lower() == ".pdf":
         return extract_text_pdf(str(resume_path))
-
-    if resume_path.suffix.lower() == ".docx":
-        return extract_text_docx(str(resume_path))
-
-    raise ValueError(f"Unsupported resume format: {resume_path.name}")
+    else:
+        raise ValueError(
+            f"Unsupported resume format: {resume_path.name}. "
+            f"Please load resume in pdf format.")
 
 
 def build_training_examples(

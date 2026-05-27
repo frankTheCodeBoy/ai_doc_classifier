@@ -5,7 +5,7 @@ from pathlib import Path
 import requests
 from dotenv import load_dotenv
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_URL = "http://127.0.0.1:8000/classify"
 DEFAULT_DATA_DIR = BASE_DIR / "data" / "raw"
 
@@ -64,23 +64,26 @@ def iter_pdf_files(data_dir: Path):
     )
 
 
-def test_resumes(url: str, data_dir: Path, timeout: float = 30.0) -> int:
+def test_resumes():
+    url, data_dir = load_settings()
     pdf_files = iter_pdf_files(data_dir)
 
-    if not pdf_files:
-        print(f"No PDF files found in {data_dir}.")
-        return 0
+    assert pdf_files, f"No PDF files found in {data_dir}"
 
     session = requests.Session()
+    headers = {
+        "X-API-Key": os.getenv(
+            "BACKEND_API_KEY", "changeme123")}  # <-- add this
 
     for pdf_path in pdf_files:
         with pdf_path.open("rb") as file_obj:
             files = {"file": (pdf_path.name, file_obj, "application/pdf")}
-            response = session.post(url, files=files, timeout=timeout)
-            response.raise_for_status()
-            print(f"{pdf_path.name} → {response.json()}")
-
-    return 0
+            response = session.post(
+                url, files=files, headers=headers, timeout=30
+                )  # <-- include headers
+            assert response.status_code == 200
+            data = response.json()
+            assert "category" in data
 
 
 def main() -> int:
