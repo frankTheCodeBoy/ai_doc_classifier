@@ -1,4 +1,5 @@
 import os
+import logging
 from collections import Counter
 from pathlib import Path
 
@@ -8,6 +9,9 @@ import streamlit as st
 from dotenv import load_dotenv
 from api.main import API_KEY
 from db import get_history, init_db
+
+# Silence noisy transformers logs
+logging.getLogger("transformers").setLevel(logging.ERROR)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(dotenv_path=BASE_DIR / ".env", override=False)
@@ -252,7 +256,7 @@ with classification_tab:
     run_classification = st.button(
         "Classify selected files",
         disabled=not classification_files,
-        use_container_width=True,
+        width="stretch",
     )
 
     if classification_files and run_classification:
@@ -288,7 +292,7 @@ with classification_tab:
                 )
 
         classification_df = pd.DataFrame(classification_results)
-        st.dataframe(classification_df, use_container_width=True)
+        st.dataframe(classification_df, width="stretch")
 
         if not classification_df.empty:
             st.bar_chart(classification_df["Category"].value_counts())
@@ -322,7 +326,7 @@ with analysis_tab:
     run_analysis = st.button(
         "Analyze selected files",
         disabled=not analysis_files,
-        use_container_width=True,
+        width="stretch",
     )
 
     if analysis_files and run_analysis:
@@ -457,7 +461,7 @@ with analysis_tab:
 
         analysis_df = pd.DataFrame(analysis_results)
         st.subheader("Summary Table")
-        st.dataframe(analysis_df, use_container_width=True)
+        st.dataframe(analysis_df, width="stretch")
 
         if not analysis_df.empty:
             scored_df = analysis_df.dropna(subset=["Confidence"])
@@ -563,6 +567,6 @@ with history_tab:
         if filtered_df.empty:
             st.info("No matching analyses found for the current filters.")
         else:
-            st.dataframe(filtered_df, use_container_width=True)
+            st.dataframe(filtered_df, width="stretch")
     else:
         st.info("No analyses stored yet.")

@@ -1,0 +1,7 @@
+# Port Configuration
+BACKEND_PORT=8000
+STREAMLIT_PORT=8501
+
+# Host Mappings (for docker run -p)
+HOST_BACKEND_PORT=8002
+HOST_STREAMLIT_PORT=8502

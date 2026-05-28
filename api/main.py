@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import os
 import sys
 import tempfile
@@ -39,7 +39,7 @@ init_db()
 allowed_origins = [
     origin.strip()
     for origin in os.getenv(
-        "ALLOWED_ORIGINS", "http://localhost:8501"
+        "ALLOWED_ORIGINS", "http://localhost:8501,http://127.0.0.1:8501"
     ).split(",")
     if origin.strip()
 ]
@@ -53,11 +53,11 @@ app.add_middleware(
 )
 
 # --- Security / Auth ---
-API_KEY = os.getenv("BACKEND_API_KEY", "")
+API_KEY = os.getenv("BACKEND_API_KEY", "changeme123")
 
 
 def verify_api_key(x_api_key: str = Header(None)):
-    if API_KEY and x_api_key != API_KEY:
+    if x_api_key != API_KEY:
         raise HTTPException(status_code=401, detail="Unauthorized")
     return True
 
@@ -420,4 +420,4 @@ async def root(_: bool = Depends(verify_api_key)):
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="127.0.0.1", port=8000, log_level="info")
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")

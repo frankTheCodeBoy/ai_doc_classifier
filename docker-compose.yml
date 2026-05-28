@@ -1,0 +1,19 @@
+version: '3.8'
+
+# Port Mapping:
+# Container Port 8000 (FastAPI backend) -> Host Port 8002
+# Container Port 8501 (Streamlit UI) -> Host Port 8502
+
+services:
+  resume-classifier:
+    image: resume-classifier:latest
+    container_name: resume-prod
+    ports:
+      - "8002:8000"  # Backend API: http://localhost:8002
+      - "8502:8501"  # Streamlit UI: http://localhost:8502
+    environment:
+      - BACKEND_API_KEY=changeme123
+      - ALLOWED_ORIGINS=http://localhost:8501,http://localhost:8000
+      - CLASSIFY_API_URL=http://localhost:8000/classify
+      - ANALYZE_API_URL=http://localhost:8000/analyze
+    restart: unless-stopped

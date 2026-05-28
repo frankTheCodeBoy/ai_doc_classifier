@@ -1,7 +1,7 @@
 ﻿fastapi
 joblib
 openai
-PyMuPDF
+pymupdf
 python-dotenv
 python-docx
 requests
@@ -9,3 +9,11 @@ scikit-learn
 sentence-transformers
 streamlit
 uvicorn
+pytesseract
+Pillow
+pandas
+numpy
+torch
+torchvision
+pytest
+pytest-cov
