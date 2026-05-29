@@ -25,6 +25,8 @@ jobs:
         push: false
         load: true
         tags: resume-classifier:test
+        cache-to: type=local,dest=/tmp/.buildx-cache
+        cache-from: type=local,src=/tmp/.buildx-cache
     
     - name: Run tests
       run: |
