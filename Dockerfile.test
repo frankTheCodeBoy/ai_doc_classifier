@@ -13,5 +13,5 @@ COPY . /app
 COPY entrypoint-test.sh /entrypoint-test.sh
 RUN chmod +x /entrypoint-test.sh
 
-# Start backend, wait for readiness, run tests
-ENTRYPOINT ["/entrypoint-test.sh"]
+# Run the test entrypoint (Python script)
+ENTRYPOINT ["python", "/entrypoint-test.sh"]
