@@ -1,43 +1,72 @@
-# Alternate Deployment Configurations (Archived)
+# Deployment Configuration Guide
 
-This folder contains deployment configurations for alternative hosting platforms that were evaluated but not currently active.
+This folder contains deployment configurations for various hosting platforms.
 
-## Available Configs
+## Current Active Deployments
 
-### 1. Azure Deployment (`ARCHIVED_AZURE_CONFIG.yml`)
-- Original Azure Container Registry + App Service setup
-- Requires credit card
-- Status: ❌ Not in use
+### 1. GitHub Codespaces (RECOMMENDED - 100% FREE)
+**Status**: ✅ Active  
+**File**: `DEPLOYMENT_GITHUB_CODESPACES.md`
+- 60 hours/month completely free
+- No credit card ever
+- Full Docker support
+- Runs in your GitHub repo
+- VS Code in browser
+- Perfect for students
 
-### 2. Railway Deployment (`ARCHIVED_RAILWAY_CONFIG.json`)
-- Railway.app configuration
-- Free tier with credits
-- Status: ❌ Deployment failed
+### 2. Replit (ALTERNATIVE - 100% FREE)
+**Status**: ✅ Active  
+**File**: `DEPLOYMENT_REPLIT.md`
+- Completely free tier
+- No credit card needed
+- Auto-deploy from GitHub
+- 1GB storage
 
-### 3. DigitalOcean Deployment (`ARCHIVED_DIGITALOCEAN_GUIDE.md`)
-- DigitalOcean App Platform setup
-- $200 student credit
-- Status: ❌ Requires credit card
+## Archived Configurations
 
-## Current Active Deployment
+### 3. DigitalOcean ($200 Student Credit)
+**Status**: ⚠️ Archived  
+**File**: `ARCHIVED_DIGITALOCEAN_GUIDE.md`
+- Requires GitHub Student Pack credit (not permanently free)
+- $5/month after credit expires
+- Reliable hosting option
 
-**Replit** (REPLIT_DEPLOYMENT.md)
-- ✅ 100% free
-- ✅ No credit card
-- ✅ Works with Docker
-- ✅ Automatic deployments
+### 4. Railway
+**Status**: ❌ Archived  
+**File**: `ARCHIVED_RAILWAY_GUIDE.md`
+- Free tier deployment failed
+- Requires credit for reliability
 
-## To Use Archived Configs
+### 5. Azure
+**Status**: ❌ Archived  
+**File**: `ARCHIVED_AZURE_GUIDE.md`
+- Requires credit card authentication
+- Complex setup process
 
-If you want to switch to an archived platform:
-1. Review the corresponding config file
-2. Follow the setup instructions
-3. Deploy accordingly
+## Quick Comparison
 
-## Adding New Platforms
+| Platform | Cost | Credit Card | Setup Time | Best For |
+|----------|------|-------------|-----------|----------|
+| **GitHub Codespaces** | FREE (60h/mo) | ❌ Never | 5 min | Always-on app |
+| **Replit** | FREE | ❌ Never | 10 min | Easy deploy |
+| DigitalOcean | $5/mo (after credit) | ⚠️ Student Pack | 15 min | Production |
+| Railway | Credit-based | ⚠️ Paid | 10 min | Rapid deploy |
+| Azure | Variable | ⚠️ Required | 20 min | Enterprise |
 
-When testing new deployment platforms:
-1. Create config in this `docs/` folder
-2. Name as `ARCHIVED_<PLATFORM>_<TYPE>.ext`
-3. Document setup steps
-4. Move main deployment when ready
+## Recommendation for You
+
+**GitHub Codespaces** ← Start here
+- Already in GitHub
+- Free with student pack
+- No payment ever
+- Full Docker support
+- Easy to manage
+
+## How to Switch Platforms
+
+1. Review the corresponding guide file
+2. Follow setup instructions
+3. Configure environment variables
+4. Deploy!
+
+All deployment files are documented and ready to use.
