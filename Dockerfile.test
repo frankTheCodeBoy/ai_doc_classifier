@@ -9,5 +9,9 @@ RUN pip install --no-cache-dir -r requirements-test.txt
 # Copy app
 COPY . /app
 
-# Run tests
-CMD ["pytest", "-v", "--tb=short", "tests/"]
+# Make entrypoint executable
+COPY entrypoint-test.sh /entrypoint-test.sh
+RUN chmod +x /entrypoint-test.sh
+
+# Start backend, wait for readiness, run tests
+ENTRYPOINT ["/entrypoint-test.sh"]
