@@ -9,9 +9,5 @@ RUN pip install --no-cache-dir -r requirements-test.txt
 # Copy app
 COPY . /app
 
-# Make entrypoint executable
-COPY entrypoint-test.sh /entrypoint-test.sh
-RUN chmod +x /entrypoint-test.sh
-
-# Run the test entrypoint (Python script)
-ENTRYPOINT ["python", "/entrypoint-test.sh"]
+# Run tests (conftest.py skips integration tests that need backend)
+CMD ["pytest", "-v", "--tb=short", "tests/"]
