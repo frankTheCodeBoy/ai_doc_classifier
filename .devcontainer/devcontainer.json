@@ -1,33 +1,19 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:latest",
+  "name": "AI Resume Classifier",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
-  "forwardPorts": [8000, 8501],
-  "portsAttributes": {
-    "8000": {
-      "label": "Backend API",
-      "onAutoForward": "notify"
-    },
-    "8501": {
-      "label": "Streamlit UI",
-      "onAutoForward": "notify"
-    }
+  "postCreateCommand": "pip install -r requirements.txt",
+  "remoteEnv": {
+    "HUGGINGFACE_API_KEY": "${CODESPACE_TOKEN}",
+    "BACKEND_API_KEY": "codespaces-dev-key-change-in-prod",
+    "ALLOWED_ORIGINS": "https://*.githubpreview.dev,http://localhost:8501,http://127.0.0.1:8501"
   },
-  "postCreateCommand": "docker build -t resume-classifier . && docker compose up -d",
-  "remoteUser": "codespace",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-vscode-remote.remote-containers",
-        "ms-vscode-remote.vscode-remote-extensionpack",
-        "ms-python.python",
-        "ms-python.vscode-pylance"
-      ],
-      "settings": {
-        "python.linting.enabled": true,
-        "python.linting.pylintEnabled": true
-      }
-    }
+  "forwardPorts": [8000, 8501, 8502],
+  "portsAttributes": {
+    "8000": { "label": "Backend API", "onAutoForward": "notify" },
+    "8501": { "label": "Streamlit Internal", "onAutoForward": "notify" },
+    "8502": { "label": "Streamlit Public", "onAutoForward": "notify" }
   }
 }
