@@ -4,16 +4,32 @@
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
-  "postCreateCommand": "pip install -r requirements.txt",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
   "remoteEnv": {
-    "HUGGINGFACE_API_KEY": "${CODESPACE_TOKEN}",
-    "BACKEND_API_KEY": "codespaces-dev-key-change-in-prod",
-    "ALLOWED_ORIGINS": "https://*.githubpreview.dev,http://localhost:8501,http://127.0.0.1:8501"
+    "HUGGINGFACE_API_KEY": "${HUGGINGFACE_API_KEY}",
+    "BACKEND_API_KEY": "codespaces-key",
+    "ALLOWED_ORIGINS": "https://*.githubpreview.dev,http://localhost:8501",
+    "CLASSIFY_API_URL": "http://localhost:8000/classify",
+    "ANALYZE_API_URL": "http://localhost:8000/analyze"
   },
-  "forwardPorts": [8000, 8501, 8502],
+  "forwardPorts": [8502, 8002, 8000],
   "portsAttributes": {
-    "8000": { "label": "Backend API", "onAutoForward": "notify" },
-    "8501": { "label": "Streamlit Internal", "onAutoForward": "notify" },
-    "8502": { "label": "Streamlit Public", "onAutoForward": "notify" }
+    "8502": { 
+      "label": "🎨 Streamlit UI (Click Here!)", 
+      "onAutoForward": "notify"
+    },
+    "8002": { 
+      "label": "📡 FastAPI Backend", 
+      "onAutoForward": "ignore"
+    },
+    "8000": { 
+      "label": "Backend Internal", 
+      "onAutoForward": "ignore"
+    }
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["README.md"]
+    }
   }
 }
