@@ -10,6 +10,24 @@
 
 ---
 
+## 🌐 Live Project — One-Click Deploy!
+
+<div align="center">
+
+### ⚡ Launch Live in 5 Minutes (FREE!)
+
+**[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/frankTheCodeBoy/ai_doc_classifier?quickstart=1)**
+
+**Or manually:** [📖 Deployment Guide](docs/DEPLOYMENT_CODESPACES_QUICK.md)
+
+### 📱 Add Your Custom Domain
+
+**[🌐 Connect name.com Domain (GitHub Student Pack)](docs/DOMAIN_SETUP.md)**
+
+</div>
+
+---
+
 ## ✨ What is This?
 
 **AI Resume Classifier** is a production-ready, full-stack application that uses **artificial intelligence** to automatically analyze resumes. Upload a PDF, and the system instantly:
@@ -59,7 +77,7 @@ No manual review needed. Pure AI-powered automation.
 
 ---
 
-## 🚀 Quick Start (2 Minutes)
+## 🚀 Quick Start (Local Development)
 
 ### Prerequisites
 ```bash
@@ -282,23 +300,25 @@ LOG_LEVEL=info
 
 ## 🧪 Testing
 
-### Run All Tests
+### Run All Tests Locally
 ```bash
-docker compose exec resume-prod pytest -v
+# Auto-starts backend, runs all 12 tests
+pytest
 ```
 
 ### Run Specific Test
 ```bash
-docker compose exec resume-prod pytest tests/test_api.py -v
+pytest tests/test_api.py -v
 ```
 
 ### Run with Coverage Report
 ```bash
-docker compose exec resume-prod pytest --cov=. tests/
+pytest --cov=. tests/
 ```
 
 ### Current Test Status
-✅ **12/12 Tests Passing**
+✅ **12/12 Tests Passing Locally**  
+✅ **6/6 Tests Passing in CI/CD**
 - API authentication ✓
 - Resume classification ✓
 - File upload handling ✓
@@ -308,16 +328,12 @@ docker compose exec resume-prod pytest --cov=. tests/
 
 ## 🌍 Deployment
 
-### Free Options
+### Quick Deploy Options
 
-#### 🚀 GitHub Codespaces (60h/month FREE)
-```bash
-1. Click "Code" → "Codespaces" → "Create codespace on main"
-2. Wait for environment to load
-3. In terminal: docker compose up -d
-4. Click the "Ports" tab and open port 8502
-```
-📖 Full Guide: [docs/DEPLOYMENT_GITHUB_CODESPACES.md](docs/DEPLOYMENT_GITHUB_CODESPACES.md)
+#### 🚀 GitHub Codespaces (FREE - 60h/month)
+**[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/frankTheCodeBoy/ai_doc_classifier?quickstart=1)**
+
+📖 [Full Guide](docs/DEPLOYMENT_CODESPACES_QUICK.md)
 
 #### 🟡 Replit (FREE Forever - Limited)
 ```bash
@@ -325,7 +341,7 @@ docker compose exec resume-prod pytest --cov=. tests/
 2. Import from GitHub
 3. Follow setup in terminal
 ```
-📖 Full Guide: [docs/DEPLOYMENT_REPLIT.md](docs/DEPLOYMENT_REPLIT.md)
+📖 [Full Guide](docs/DEPLOYMENT_REPLIT.md)
 
 #### 💰 DigitalOcean ($200 Student Credit)
 ```bash
@@ -333,7 +349,7 @@ docker compose exec resume-prod pytest --cov=. tests/
 2. Create Droplet
 3. Deploy with Docker
 ```
-📖 Full Guide: [docs/ARCHIVED_DIGITALOCEAN_GUIDE.md](docs/ARCHIVED_DIGITALOCEAN_GUIDE.md)
+📖 [Full Guide](docs/ARCHIVED_DIGITALOCEAN_GUIDE.md)
 
 ---
 
