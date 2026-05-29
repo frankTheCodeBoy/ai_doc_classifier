@@ -19,6 +19,7 @@ from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
 from db import init_db, save_analysis  # noqa: E402
 from utils.extract import extract_text_pdf  # noqa: E402
 from utils.preprocess import clean_text  # noqa: E402
+from utils.huggingface_utils import summarize_resume_with_hf  # noqa: E402
 
 try:
     from openai import OpenAI  # noqa: E402
@@ -288,6 +289,11 @@ def _extract_strengths(text: str) -> list[str]:
 def _summarize_resume(text: str, category: str) -> str:
     cleaned = clean_text(text)
     top_skills = _extract_skills(text)
+
+    # Try Hugging Face API first for AI-powered summary
+    hf_summary = summarize_resume_with_hf(text)
+    if hf_summary:
+        return hf_summary
 
     if not top_skills:
         return (
