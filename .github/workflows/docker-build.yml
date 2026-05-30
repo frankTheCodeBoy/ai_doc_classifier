@@ -27,4 +27,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: frankthecodeboy/ai_doc_classifier:latest
+        tags: frankolum/ai_doc_classifier:latest
