@@ -5,5 +5,13 @@
   "remoteEnv": {
     "HUGGINGFACE_API_KEY": "${{ secrets.HUGGINGFACE_API_KEY }}"
   },
-  "forwardPorts": []
+  "forwardPorts": [],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  }
 }
+
