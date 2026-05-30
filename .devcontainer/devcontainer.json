@@ -1,17 +1,17 @@
 {
   "name": "AI Resume Classifier",
-  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "image": "mcr.microsoft.com/devcontainers/base:jammy",
+  "features": {
+    "docker-in-docker": "latest"
+  },
   "postCreateCommand": "pip install -q -r requirements.txt && echo '✅ Environment ready! Run: bash deploy.sh'",
   "remoteEnv": {
     "HUGGINGFACE_API_KEY": "${{ secrets.HUGGINGFACE_API_KEY }}"
   },
-  "forwardPorts": [],
+  "forwardPorts": [8000, 8502],
   "customizations": {
     "vscode": {
-      "extensions": [
-        "ms-azuretools.vscode-docker"
-      ]
+      "extensions": ["ms-azuretools.vscode-docker"]
     }
   }
 }
-
