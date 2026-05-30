@@ -4,7 +4,7 @@
   "features": {
     "docker-in-docker": "latest"
   },
-  "postCreateCommand": "pip install -q -r requirements.txt && echo '✅ Environment ready! Run: bash deploy.sh'",
+  "postCreateCommand": "echo '✅ Environment ready! Run: bash deploy.sh' && gh codespace ports visibility 8502:public 8000:public -c $CODESPACE_NAME",
   "remoteEnv": {
     "HUGGINGFACE_API_KEY": "${{ secrets.HUGGINGFACE_API_KEY }}"
   },
