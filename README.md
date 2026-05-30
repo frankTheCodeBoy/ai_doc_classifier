@@ -10,19 +10,16 @@
 
 ---
 
-## 🌐 Live Project — One-Click Deploy!
+## 🌐 Live Project — One-Click Access
 
 <div align="center">
 
-### ⚡ Launch Live in 5 Minutes (FREE!)
+### 🚀 Try the Live Demo
 
-**[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/frankTheCodeBoy/ai_doc_classifier?quickstart=1)**
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Open%20App-brightgreen?style=for-the-badge&logo=streamlit)](https://psychic-trout-rx4qj47r9w5cxx59-8502.app.github.dev)
 
-**Or manually:** [📖 Deployment Guide](docs/DEPLOYMENT_CODESPACES_QUICK.md)
-
-### 📱 Add Your Custom Domain
-
-**[🌐 Connect name.com Domain (GitHub Student Pack)](docs/DOMAIN_SETUP.md)**
+🔗 **Cloud Run Deployment:**  
+[https://ai-doc-classifier-xyz.run.app](https://ai-doc-classifier-xyz.run.app)
 
 </div>
 
