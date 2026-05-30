@@ -1,35 +1,7 @@
 {
   "name": "AI Resume Classifier",
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  },
   "postCreateCommand": "pip install -q -r requirements.txt && echo '✅ Environment ready! Run: bash deploy.sh'",
-  "remoteEnv": {
-    "HUGGINGFACE_API_KEY": "${HUGGINGFACE_API_KEY}",
-    "BACKEND_API_KEY": "codespaces-key",
-    "ALLOWED_ORIGINS": "https://*.githubpreview.dev,http://localhost:8501",
-    "CLASSIFY_API_URL": "http://localhost:8000/classify",
-    "ANALYZE_API_URL": "http://localhost:8000/analyze"
-  },
-  "forwardPorts": [8502, 8002, 8000],
-  "portsAttributes": {
-    "8502": { 
-      "label": "🎨 Streamlit UI - Click Here!", 
-      "onAutoForward": "notify"
-    },
-    "8002": { 
-      "label": "📡 FastAPI Backend", 
-      "onAutoForward": "ignore"
-    },
-    "8000": { 
-      "label": "Backend Internal", 
-      "onAutoForward": "ignore"
-    }
-  },
-  "customizations": {
-    "codespaces": {
-      "openFiles": ["README.md", "DEPLOY.md"]
-    }
-  }
+  "remoteEnv": {},
+  "forwardPorts": []
 }
