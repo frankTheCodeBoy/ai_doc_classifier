@@ -155,3 +155,6 @@ docker compose ps --format "table {{.Names}}\t{{.Status}}"
 echo ""
 echo "🧠 Happy analyzing!"
 echo ""
+
+# Run post-deploy script to show direct link
+bash .devcontainer/post-deploy.sh || true
