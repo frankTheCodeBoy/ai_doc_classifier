@@ -1,5 +1,4 @@
 #!/bin/bash
-# Codespaces postCreateCommand
-# Simply calls the main deploy script
-
-bash deploy.sh
+# Minimal setup - just print instructions
+echo "✅ Environment ready!"
+echo "Run: bash deploy.sh"

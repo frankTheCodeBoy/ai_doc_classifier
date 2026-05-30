@@ -4,7 +4,7 @@
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
-  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postCreateCommand": "pip install -q -r requirements.txt && echo '✅ Environment ready! Run: bash deploy.sh'",
   "remoteEnv": {
     "HUGGINGFACE_API_KEY": "${HUGGINGFACE_API_KEY}",
     "BACKEND_API_KEY": "codespaces-key",
@@ -15,7 +15,7 @@
   "forwardPorts": [8502, 8002, 8000],
   "portsAttributes": {
     "8502": { 
-      "label": "🎨 Streamlit UI (Click Here!)", 
+      "label": "🎨 Streamlit UI - Click Here!", 
       "onAutoForward": "notify"
     },
     "8002": { 
@@ -29,7 +29,7 @@
   },
   "customizations": {
     "codespaces": {
-      "openFiles": ["README.md"]
+      "openFiles": ["README.md", "DEPLOY.md"]
     }
   }
 }
