@@ -19,9 +19,9 @@
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Open%20App-brightgreen?style=for-the-badge&logo=streamlit)](https://psychic-trout-rx4qj47r9w5cxx59-8502.app.github.dev)
 
 ⚠️ **Notice**  
-This button points directly to the running app:  
-- If the environment is **active**, the app loads instantly.  
-- If the environment is **inactive**, GitHub will spin it up automatically — visitors may wait a few minutes before it’s ready.  
+The button points directly to the running app:  
+If the environment is **active**, the app loads instantly.  
+If the environment is **inactive**, GitHub will spin it up automatically — visitors may wait a few minutes before it’s ready.  
 
 ---
 
