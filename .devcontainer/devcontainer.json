@@ -4,8 +4,7 @@
   "features": {
     "docker-in-docker": "latest"
   },
-  "postCreateCommand": "echo '✅ Environment ready! Run: bash deploy.sh' && gh codespace ports visibility 8502:public 8000:public -c $CODESPACE_NAME",
-  "remoteEnv": {
+  "postCreateCommand": "echo '✅ Environment ready! Run: bash deploy.sh' && gh codespace ports visibility 8000:public 8502:public -c $(gh codespace list --json name --jq '.[0].name')",
     "HUGGINGFACE_API_KEY": "${{ secrets.HUGGINGFACE_API_KEY }}"
   },
   "forwardPorts": [8000, 8502],
