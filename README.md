@@ -10,7 +10,7 @@
 
 ---
 
-## 🌐 Live Project — One-Click Access
+## 🌐 Live Project — One‑Click Access
 
 <div align="center">
 
@@ -18,12 +18,10 @@
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Open%20App-brightgreen?style=for-the-badge&logo=streamlit)](https://psychic-trout-rx4qj47r9w5cxx59-8502.app.github.dev)
 
----
-
 ⚠️ **Notice**  
-The button points directly to the app:  
-If the environment is **active**, the app loads instantly.  
-If the environment is **inactive**, GitHub will spin it up automatically — visitors may wait a few minutes before the app is ready.
+This button points directly to the running app:  
+- If the environment is **active**, the app loads instantly.  
+- If the environment is **inactive**, GitHub will spin it up automatically — visitors may wait a few minutes before it’s ready.  
 
 ---
 
@@ -31,8 +29,15 @@ If the environment is **inactive**, GitHub will spin it up automatically — vis
 
 [![Cloud Run](https://img.shields.io/badge/Cloud%20Run-Coming%20Soon-lightgrey?style=for-the-badge&logo=googlecloud)](#)
 
-</div>
+---
 
+### 🛠️ Developer Environment
+
+[![Codespaces](https://img.shields.io/badge/Open%20in-Codespaces-blue?style=for-the-badge&logo=github)](https://github.dev/frankTheCodeBoy/ai_doc_classifier)
+
+*Launch a ready‑to‑go developer environment in GitHub Codespaces.*
+
+</div>
 
 ---
 
