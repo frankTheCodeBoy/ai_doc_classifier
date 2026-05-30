@@ -2,6 +2,8 @@
   "name": "AI Resume Classifier",
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
   "postCreateCommand": "pip install -q -r requirements.txt && echo '✅ Environment ready! Run: bash deploy.sh'",
-  "remoteEnv": {},
+  "remoteEnv": {
+    "HUGGINGFACE_API_KEY": "${{ secrets.HUGGINGFACE_API_KEY }}"
+  },
   "forwardPorts": []
 }
